@@ -22,15 +22,17 @@ list(set=set, get=get,
 
 
 cacheSolve <- function(x, ...) {
-        
-  inv<-x$getinv()
+ ## return inverse of the original matrix input to makeCacheMatrix()      
+  inv<-x$get_inverse()
+  # if the inverse has already been calculated
   if(!is.null(inv)) {
     message("getting cached data")
     return (inv)
   }
+  ## if not, calculates the inverse 
   matr<-x$get()
   inv<-solve(data, ...)
-  x$setinv(inv)
+  x$set_inverse(inv)
   return(inv)
 }
 
